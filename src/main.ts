@@ -1,4 +1,4 @@
 import { createApp } from "vue";
-import Examples from "../examples/form-example.vue";
+import App from "./App.vue";
 
-createApp(Examples).mount("#app");
+createApp(App).mount("#app");

@@ -1,13 +1,18 @@
 {
   "name": "vue-admin-form-layout-component",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/vue-admin-form-layout-component.umd.cjs",
+  "module": "dist/vue-admin-form-layout-component.js",
   "dependencies": {
     "vue": "^3.3.4"
   },

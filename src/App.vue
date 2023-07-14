@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormLayout } from "../src";
+import FormLayout from "../packages/FormLayout";
 defineOptions({
   name: "form-example",
 });
