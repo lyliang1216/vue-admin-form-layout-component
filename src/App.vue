@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import FormLayout from "../packages/FormLayout";
+import FormLayout from "../packages/FormLayout/index.vue";
 defineOptions({
   name: "form-example",
 });
-interface A {}
-
-defineProps<A>();
 </script>
 <template>
   <div class="page-wrapper">
