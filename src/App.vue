@@ -5,18 +5,24 @@ defineOptions({
 });
 </script>
 <template>
-  <div class="page-wrapper">
-    <FormLayout fixedContentArea>
-      <template #header> 头部 </template>
-      我的表单部分
-      <template #footer> 尾部 </template>
-    </FormLayout>
+  <div class="out">
+    <div class="page-wrapper">
+      <FormLayout fixedContentArea>
+        <template #header>头部</template>
+        <div v-for="i in 100" :key="i">{{ i }}</div>
+        <template #footer>尾部</template>
+      </FormLayout>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.page-wrapper {
+.out {
   width: 1200px;
   height: 400px;
+}
+.page-wrapper {
+  width: 100%;
+  height: 100%;
 }
 </style>
