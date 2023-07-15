@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { FormLayout } from "../packages/index";
 defineOptions({
   name: "form-example",
 });
@@ -9,6 +8,7 @@ defineOptions({
     <div class="page-wrapper">
       <FormLayout fixedContentArea>
         <template #header>头部</template>
+        <Button>aa</Button>
         <div v-for="i in 100" :key="i">{{ i }}</div>
         <template #footer>尾部</template>
       </FormLayout>

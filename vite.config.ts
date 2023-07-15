@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import VitePluginStyleInject from "vite-plugin-style-inject";
 import dts from "vite-plugin-dts";
 import { resolve } from "path";
+import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +11,12 @@ export default defineConfig({
     open: true,
   },
   plugins: [vue(), VitePluginStyleInject(), dts({ include: "./packages" })],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      images: fileURLToPath(new URL("./src/assets/images", import.meta.url)),
+    },
+  },
   build: {
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
@@ -23,7 +30,7 @@ export default defineConfig({
     },
     lib: {
       entry: resolve(__dirname, "./packages/index.ts"),
-      name: "Bundle",
+      name: "FormLayout",
       fileName: "bundle",
     },
   },
