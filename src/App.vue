@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FormLayout from "../packages/FormLayout/index.vue";
+import { FormLayout } from "../packages/index";
 defineOptions({
   name: "form-example",
 });

@@ -33,10 +33,10 @@ onMounted(() => {
       <template v-if="!slots.header && title">
         {{ title }}
       </template>
-      <slot name="head" v-else></slot>
+      <slot name="header" v-else></slot>
     </div>
     <div
-      :class="'form' + (fixedContentArea ? ' fixed' : '')"
+      :class="'form' + (fixedContentArea ? ' fixed-content-area' : '')"
       :style="{ height: height ? height + 'px' : 'auto' }"
     >
       <slot name="default"></slot>
@@ -63,7 +63,7 @@ onMounted(() => {
   max-width: 800px;
   margin-right: 50px;
 }
-.form.fixed {
+.form.fixed-content-area {
   overflow-y: auto;
 }
 .footer {
