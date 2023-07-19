@@ -11,7 +11,7 @@ type FormLayoutProps = {
 };
 
 const props = withDefaults(defineProps<FormLayoutProps>(), {
-  width: "100%",
+  width: "800px",
   maxWidth: "100%",
 });
 
