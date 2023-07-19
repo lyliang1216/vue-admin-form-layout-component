@@ -12,7 +12,8 @@
     "preview": "vite preview"
   },
   "files": [
-    "dist/*"
+    "dist/*",
+    "index.d.ts"
   ],
   "dependencies": {
     "vue": "^3.3.4"

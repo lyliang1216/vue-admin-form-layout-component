@@ -1,15 +1,7 @@
-type OptionsType = {
-  fixedContentArea?: boolean;
-};
+import FormLayout from "./dist/packages/formLayout/FormLayout.vue";
 
-declare module "form-layout" {
-  export const FormLayout: import("vue").DefineComponent<OptionsType>;
-
-  const install: (
-    app: import("vue").App,
-    options: {
-      name: string;
-    }
-  ) => unknown;
-  export default install;
+declare module "@vue/runtime-core" {
+  export interface GlobalComponents {
+    FormLayout: typeof FormLayout;
+  }
 }
