@@ -1,7 +1,7 @@
 {
   "name": "vue-admin-form-layout-component",
   "private": false,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "main": "./dist/bundle.js",
   "module": "./dist/bundle.js",
