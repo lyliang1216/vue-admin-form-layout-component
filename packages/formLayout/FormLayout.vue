@@ -1,19 +1,33 @@
 <script lang="ts" setup>
-import { nextTick, onMounted, ref, useSlots } from "vue";
+import { computed, nextTick, onMounted, ref, useSlots } from "vue";
 
 const slots = useSlots();
 
 type FormLayoutProps = {
   title?: string;
   fixedContentArea?: boolean;
+  width?: string | number;
+  maxWidth?: string | number;
 };
 
-const props = defineProps<FormLayoutProps>();
+const props = withDefaults(defineProps<FormLayoutProps>(), {
+  width: "100%",
+  maxWidth: "100%",
+});
 
 const formLayoutRef = ref<HTMLElement | null>(null);
 const formLayoutHeaderRef = ref<HTMLElement | null>(null);
 const formLayoutFooterRef = ref<HTMLElement | null>(null);
 const height = ref<number>(0);
+
+const _width = computed(() =>
+  /[%px]/.test(props.width.toString()) ? props.width : props.width + "px"
+);
+const _maxWidth = computed(() =>
+  /[%px]/.test(props.maxWidth.toString())
+    ? props.maxWidth
+    : props.maxWidth + "px"
+);
 
 onMounted(() => {
   if (props.fixedContentArea) {
@@ -36,10 +50,14 @@ onMounted(() => {
       <slot name="header" v-else></slot>
     </div>
     <div
-      :class="'form' + (fixedContentArea ? ' fixed-content-area' : '')"
+      :class="
+        'form-layout-content' + (fixedContentArea ? ' fixed-content-area' : '')
+      "
       :style="{ height: height ? height + 'px' : 'auto' }"
     >
-      <slot name="default"></slot>
+      <div class="form-content" :style="{ width: _width, maxWidth: _maxWidth }">
+        <slot name="default"></slot>
+      </div>
     </div>
     <div class="footer" v-if="slots.footer" ref="formLayoutFooterRef">
       <slot name="footer"></slot>
@@ -50,6 +68,8 @@ onMounted(() => {
 <style scoped>
 .form-layout {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .header {
   border-bottom: 1px solid #f5f5f5;
@@ -59,12 +79,15 @@ onMounted(() => {
   line-height: 32px;
   margin-bottom: 32px;
 }
-.form {
-  max-width: 800px;
-  margin-right: 50px;
+.form-layout-content {
+  flex: 1;
 }
-.form.fixed-content-area {
+.form-layout-content.fixed-content-area {
   overflow-y: auto;
+}
+.form-content {
+  padding-left: 50px;
+  box-sizing: border-box;
 }
 .footer {
   margin-top: 32px;
